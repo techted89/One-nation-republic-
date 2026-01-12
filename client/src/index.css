@@ -1,0 +1,20 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 4rem;
+    color: rgba(255, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+    width: 100vw;
+    text-align: center;
+  }
+}
