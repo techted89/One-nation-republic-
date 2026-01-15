@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import dashboardDesktop from '../assets/images/backgrounds/dashboard-desktop.jpg';
+import dashboardMobile from '../assets/images/backgrounds/dashboard-mobile.jpg';
 
 interface Document {
   id: number;
@@ -40,7 +42,7 @@ const Dashboard: React.FC = () => {
   if (!user) return <div className="p-10 text-center">Loading Fortress...</div>;
 
   return (
-    <Layout>
+    <Layout bgImageDesktop={dashboardDesktop} bgImageMobile={dashboardMobile}>
       {/* Watermark Overlay */}
       <div className="watermark">
         {user.full_name} - {user.id} - LICENSED
@@ -60,12 +62,12 @@ const Dashboard: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Main Library Area */}
           <div className="md:col-span-2">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white/95 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-navy mb-6 border-b pb-2">Lawful Freedom Library</h2>
 
               <div className="space-y-4">
                 {documents.map((doc) => (
-                  <div key={doc.id} className="flex justify-between items-center p-4 border rounded hover:bg-gray-50 transition">
+                  <div key={doc.id} className="flex justify-between items-center p-4 border rounded hover:bg-white/50 transition">
                     <div>
                       <h3 className="font-bold text-navy">{doc.title}</h3>
                       <span className="text-xs text-gray-500 uppercase">{doc.category} • {doc.type}</span>
@@ -90,7 +92,7 @@ const Dashboard: React.FC = () => {
 
           {/* Sidebar */}
           <div className="space-y-8">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white/95 rounded-lg shadow-md p-6">
               <h3 className="text-xl font-bold text-navy mb-4">Patriot Alliance Forum</h3>
               <p className="text-gray-600 text-sm mb-4">Connect with fellow members in the private forum.</p>
               <div className="bg-gray-100 p-4 rounded text-center text-gray-500 italic">
@@ -98,7 +100,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-navy text-white rounded-lg shadow-md p-6">
+            <div className="bg-navy/95 text-white rounded-lg shadow-md p-6">
                <h3 className="text-xl font-bold text-gold mb-4">Donate / Upgrade</h3>
                <p className="text-sm mb-4">Support the cause with anonymous crypto payments.</p>
                <div className="space-y-2">
