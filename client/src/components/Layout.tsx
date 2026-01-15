@@ -2,9 +2,16 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+  bgImageDesktop?: string;
+  bgImageMobile?: string;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, bgImageDesktop, bgImageMobile }) => {
   const navigate = useNavigate();
   const isAuthenticated = document.cookie.includes('token');
+  const hasBackground = !!(bgImageDesktop || bgImageMobile);
 
   const handleLogout = async () => {
     // In a real app, call API
@@ -13,8 +20,25 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
-      <header className="bg-navy text-white p-4 shadow-md">
+    <div className="min-h-screen flex flex-col font-sans relative">
+      {hasBackground && (
+        <div className="fixed inset-0 -z-10 bg-navy">
+          {bgImageMobile && (
+            <div
+              className={`absolute inset-0 bg-cover bg-center ${bgImageDesktop ? 'md:hidden' : ''}`}
+              style={{ backgroundImage: `url(${bgImageMobile})` }}
+            />
+          )}
+          {bgImageDesktop && (
+            <div
+              className="absolute inset-0 bg-cover bg-center hidden md:block"
+              style={{ backgroundImage: `url(${bgImageDesktop})` }}
+            />
+          )}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+      )}
+      <header className="bg-navy text-white p-4 shadow-md relative z-10">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-gold tracking-wider">ONE NATION</Link>
           <nav className="space-x-4">
@@ -31,7 +55,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </header>
 
-      <main className="flex-grow bg-gray-50">
+      <main className={`flex-grow ${hasBackground ? '' : 'bg-gray-50'} relative z-0`}>
         {children}
       </main>
 

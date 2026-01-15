@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import authDesktop from '../assets/images/backgrounds/auth-desktop.jpg';
+import authMobile from '../assets/images/backgrounds/auth-mobile.jpg';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -57,9 +59,9 @@ const Register: React.FC = () => {
   };
 
   return (
-    <Layout>
+    <Layout bgImageDesktop={authDesktop} bgImageMobile={authMobile}>
       <div className="container mx-auto max-w-md py-20 px-4">
-        <div className="bg-white p-8 rounded-lg shadow-xl border-t-4 border-navy">
+        <div className="bg-white/95 p-8 rounded-lg shadow-xl border-t-4 border-navy">
           <h2 className="text-2xl font-bold text-navy mb-6 text-center">
             {step === 1 ? 'Enter License Key' : 'Create Account'}
           </h2>

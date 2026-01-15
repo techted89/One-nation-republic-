@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { useNavigate } from 'react-router-dom';
+import landingDesktop from '../assets/images/backgrounds/landing-desktop.jpg';
+import landingMobile from '../assets/images/backgrounds/landing-mobile.jpg';
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,9 +47,9 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <Layout>
+    <Layout bgImageDesktop={landingDesktop} bgImageMobile={landingMobile}>
       {/* Hero Section */}
-      <section className="bg-navy text-white py-20 relative overflow-hidden">
+      <section className="bg-navy/90 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gold">Unlock Your True Status</h1>
@@ -64,7 +66,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Intro Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white/90">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-navy mb-6">Welcome to One Nation</h2>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -77,7 +79,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Features/Library Teaser */}
-      <section className="py-16 px-4 bg-gray-100">
+      <section className="py-16 px-4 bg-white/80">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-navy mb-4">The Lawful Freedom Library 📚✨</h2>
@@ -130,7 +132,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-16 px-4 bg-navy text-white">
+      <section id="quiz" className="py-16 px-4 bg-navy/90 text-white">
         <div className="container mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold mb-8 text-gold">The Knowledge Test</h2>
           <div className="bg-navy-dark p-8 rounded-lg border border-gray-700">
@@ -149,7 +151,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white/90">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold text-navy mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-2">
@@ -174,7 +176,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-16 px-4 bg-white/90">
         <div className="container mx-auto max-w-xl">
           <h2 className="text-3xl font-bold text-navy mb-8 text-center">Contact Us</h2>
           <form onSubmit={handleContactSubmit} className="bg-white p-8 rounded-lg shadow-md">
