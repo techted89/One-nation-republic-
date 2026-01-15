@@ -1,7 +1,8 @@
 
 import Database from 'better-sqlite3';
 
-const db = new Database('database.sqlite');
+const dbPath = process.env.DB_PATH || 'database.sqlite';
+const db = new Database(dbPath);
 
 export const initDb = () => {
   db.exec(`

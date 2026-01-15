@@ -74,9 +74,9 @@ router.post('/register', async (req, res) => {
   }
 
   // 3. Create User & Update License & Add Device (Transaction)
-  const registerTx = db.transaction(() => {
-    const hashedPassword = bcrypt.hashSync(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
+  const registerTx = db.transaction(() => {
     const insertUser = db.prepare('INSERT INTO users (email, password_hash, full_name) VALUES (?, ?, ?)');
     const result = insertUser.run(email, hashedPassword, fullName);
     const userId = result.lastInsertRowid;

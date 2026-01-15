@@ -6,7 +6,7 @@ import { initDb } from './db.js'; // Note the .js extension for ESM
 import router from './routes.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
